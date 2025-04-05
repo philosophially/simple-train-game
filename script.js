@@ -3,6 +3,20 @@ const CANVAS_SIZE = 400;
 const GRID_SIZE = 20;
 const CELL_SIZE = CANVAS_SIZE / GRID_SIZE;
 
+// Train colors array
+const TRAIN_COLORS = [
+  "#2c3e50", // Dark blue (default)
+  "#ff5d9e", // Pink
+  "#2ecc71", // Green
+  "#876464", // Brown
+  "#9b59b6", // Purple
+  "#1abc9c", // Turquoise
+  "#e67e22", // Orange
+  "#3498db", // Light blue
+  "#34495e", // Darker blue
+  "#16a085", // Dark turquoise
+];
+
 // Game variables
 let canvas, ctx;
 let train = [];
@@ -121,6 +135,12 @@ function startGame() {
   console.log("Game loop started");
 }
 
+// Get current train color based on score
+function getTrainColor() {
+  const colorIndex = Math.floor(score / 50) % TRAIN_COLORS.length;
+  return TRAIN_COLORS[colorIndex];
+}
+
 // Update game state
 function update() {
   if (gameOver) return;
@@ -166,8 +186,8 @@ function draw() {
   ctx.fillStyle = "#ecf0f1";
   ctx.fillRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
 
-  // Draw train
-  ctx.fillStyle = "#2c3e50";
+  // Draw train with current color
+  ctx.fillStyle = getTrainColor();
   for (let segment of train) {
     ctx.fillRect(
       segment.x * CELL_SIZE,
