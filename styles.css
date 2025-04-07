@@ -80,7 +80,7 @@ h3 {
 .medal {
   width: 40px;
   height: 40px;
-  border-radius: 50%;
+  border-radius: 90%;
   position: relative;
   display: flex;
   align-items: center;
@@ -94,7 +94,7 @@ h3 {
 }
 
 .medal::before {
-  content: "🏅";
+  content: "🚉";
   font-size: 24px;
   position: absolute;
 }
@@ -104,7 +104,7 @@ h3 {
   position: absolute;
   width: 100%;
   height: 100%;
-  border-radius: 50%;
+  border-radius: 90%;
   background: radial-gradient(
     circle at 30% 30%,
     rgba(255, 255, 255, 0.8),
