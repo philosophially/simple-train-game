@@ -5,16 +5,16 @@ const CELL_SIZE = CANVAS_SIZE / GRID_SIZE;
 
 // Train colors array
 const TRAIN_COLORS = [
-  "#2c3e50", // Dark blue (default)
-  "#ff5d9e", // Pink
-  "#2ecc71", // Green
+  "#204852", // Blue Dianne (default)
+  "#eb2632", // Red
+  "#ff9a3c", // Orange
+  "#efd510", // Yellow
+  "#17b794", // Green
+  "#0092ca", // Blue
+  "#8971d0", // Indigo (Purple)
+  "#ff5d9e", // Violet (Pink)
   "#876464", // Brown
-  "#9b59b6", // Purple
-  "#1abc9c", // Turquoise
-  "#e67e22", // Orange
-  "#3498db", // Light blue
-  "#34495e", // Darker blue
-  "#16a085", // Dark turquoise
+  "#323643", // Black Grey
 ];
 
 // Game variables
