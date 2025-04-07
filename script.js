@@ -26,12 +26,14 @@ let score = 0;
 let gameLoop;
 let gameStarted = false;
 let gameOver = false;
+let medalsContainer;
 
 // Initialize game
 function init() {
   console.log("Initializing game...");
   canvas = document.getElementById("gameCanvas");
   ctx = canvas.getContext("2d");
+  medalsContainer = document.getElementById("medals");
 
   // Set canvas size
   canvas.width = CANVAS_SIZE;
@@ -47,12 +49,40 @@ function init() {
   // Initialize food
   generateFood();
 
+  // Initialize medals
+  initializeMedals();
+
   // Add event listeners
   document.addEventListener("keydown", handleKeyPress);
   document
     .getElementById("startButton")
     .addEventListener("click", startNewGame);
   console.log("Game initialized successfully");
+}
+
+// Initialize medals
+function initializeMedals() {
+  medalsContainer.innerHTML = "";
+  for (let i = 0; i < TRAIN_COLORS.length; i++) {
+    const medal = document.createElement("div");
+    medal.className = "medal";
+    medal.style.backgroundColor = TRAIN_COLORS[i];
+    medalsContainer.appendChild(medal);
+  }
+}
+
+// Update medals based on score
+function updateMedals() {
+  const currentColorIndex = Math.floor(score / 50);
+  const medals = medalsContainer.children;
+
+  for (let i = 0; i < medals.length; i++) {
+    if (i <= currentColorIndex) {
+      medals[i].classList.add("unlocked");
+    } else {
+      medals[i].classList.remove("unlocked");
+    }
+  }
 }
 
 // Generate food at random position
@@ -122,6 +152,7 @@ function startNewGame() {
   gameStarted = false;
   document.getElementById("startButton").classList.add("hidden");
   generateFood();
+  updateMedals();
   console.log("New game state initialized");
 }
 
@@ -172,6 +203,7 @@ function update() {
   if (head.x === food.x && head.y === food.y) {
     score += 10;
     document.getElementById("score").textContent = score;
+    updateMedals();
     generateFood();
   } else {
     train.pop();
