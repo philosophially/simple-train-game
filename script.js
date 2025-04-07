@@ -8,13 +8,13 @@ const TRAIN_COLORS = [
   "#204852", // Blue Dianne (default)
   "#eb2632", // Red
   "#ff9a3c", // Orange
-  "#efd510", // Yellow
+  "#876464", // Brown
   "#17b794", // Green
   "#0092ca", // Blue
   "#8971d0", // Indigo (Purple)
   "#ff5d9e", // Violet (Pink)
-  "#876464", // Brown
-  "#323643", // Black Grey
+  "#303841", // Black Grey
+  "#fac70b", // Yellow
 ];
 
 // Game variables
@@ -197,8 +197,10 @@ function draw() {
     );
   }
 
-  // Draw food
-  ctx.fillStyle = "#e74c3c";
+  // Draw food with next train color
+  const currentColorIndex = Math.floor(score / 50) % TRAIN_COLORS.length;
+  const nextColorIndex = (currentColorIndex + 1) % TRAIN_COLORS.length;
+  ctx.fillStyle = TRAIN_COLORS[nextColorIndex];
   ctx.fillRect(
     food.x * CELL_SIZE,
     food.y * CELL_SIZE,
