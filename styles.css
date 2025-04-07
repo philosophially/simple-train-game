@@ -26,6 +26,10 @@ h1 {
   margin-bottom: 1rem;
 }
 
+h3 {
+  display: none;
+}
+
 .score-container {
   font-size: 1.2rem;
   color: #2c3e50;
@@ -107,4 +111,70 @@ h1 {
     transparent
   );
   pointer-events: none;
+}
+
+@media (max-width: 960px) {
+  .game-container {
+    padding: 1rem;
+    border-radius: 5px;
+  }
+
+  #gameCanvas {
+    margin: 0.5rem 0;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .score-container {
+    font-size: 1rem;
+  }
+
+  .controls {
+    font-size: 0.8rem;
+  }
+
+  .medals-container {
+    margin: 10px auto;
+  }
+
+  .medal {
+    width: 30px;
+    height: 30px;
+  }
+
+  .medal::before {
+    font-size: 18px;
+  }
+
+  .medal::after {
+    width: 80%;
+    height: 80%;
+  }
+
+  #startButton {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 600px) {
+  h3 {
+    display: contents;
+    color: #2c3e50;
+    margin-bottom: 1rem;
+  }
+
+  span {
+    display: none;
+  }
+
+  #gameCanvas {
+    display: none;
+  }
+
+  .medals-container {
+    display: none;
+  }
 }
